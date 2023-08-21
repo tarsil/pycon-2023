@@ -21,7 +21,7 @@ run: ## Starts the local server with production settings
 
 .PHONY: requirements
 requirements: ## Installs all the requirements
-	pip install -r requirements.txt
+	pip install -r requirements/development.txt
 
 .PHONY: test
 test: ## Runs the local tests with nose

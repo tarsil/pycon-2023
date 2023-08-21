@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  db:
+    restart: always
+    image: postgres:15.3
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "blog"
+    expose:
+      - "5432"
+    volumes:
+      - "blog:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+
+volumes:
+  blog:
+    external: true
