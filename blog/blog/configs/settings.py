@@ -36,19 +36,22 @@ class AppSettings(DatabaseSettings):
     environment: Optional[str] = EnvironmentType.PRODUCTION
     secret_key: str = "esmerald-insecure-)&amp;e5_#d@%z8h+p23r-6a8nhh!sc##^8x"
 
-    @cached_property
-    def db_access(self):
-        """
-        Configures the database access and connection string settings.
-        """
-        connection_string = "postgresql+asyncpg://{user}:{passwd}@{host}:{port}/{name}".format(
+    @property
+    def connection_string(self) -> str:
+        return "postgresql+asyncpg://{user}:{passwd}@{host}:{port}/{name}".format(
             user=self.db_user,
             passwd=self.db_password,
             host=self.db_host,
             port=self.db_port,
             name=self.db_name,
         )
-        database = Database(connection_string)
+
+    @cached_property
+    def db_access(self):
+        """
+        Configures the database access and connection string settings.
+        """
+        database = Database(self.connection_string)
         registry = Registry(database=database)
         return database, registry
 

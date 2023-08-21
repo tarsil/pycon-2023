@@ -13,5 +13,3 @@ def create_app():
 
 def get_client():
     return EsmeraldTestClient(create_app())
-
-# Add your tests here
