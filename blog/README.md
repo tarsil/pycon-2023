@@ -51,9 +51,33 @@ This simple blgo application integrates [Esmerald][esmerald], [Saffier][saffier]
     http://localhost:8000/docs/stoplight # for stoplight
     ```
 
+### Create your superuser
+
+If you want to fully take advantage of the superuser within this project, you must create one.
+
+```shell
+esmerald run --directive createsuperuser --first-name <YOUR-NAME> --last-name <LAST-NAME> --email <YOUR-EMAIL> --username <YOUR-USER> --password <YOUR-PASSWORD>
+```
+
+If the user you are trying to create already exists, you will get an error message:
+
+```shell
+User with email <EMAIL> already exists.
+```
+
 ## Testing
 
-To run the tests tou can simply
+To run the tests tou can simply run:
+
+```shell
+$ pytest
+```
+
+Or alternatively
+
+```shell
+$ make test
+```
 
 [esmerald]: https://esmerald.dev
 [saffier]: https://saffier.tarsild.io
