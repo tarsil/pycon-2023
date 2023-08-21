@@ -1,0 +1,3 @@
+esmerald[all]>=2.0.5
+saffier[postgres]>=0.17.0
+esmerald-admin[saffier]>=0.3.0
