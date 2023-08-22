@@ -14,6 +14,7 @@ from .schemas import Error, UserIn, UserOut
     "/users",
     tags=["User"],
     description="List of all the users in the system",
+    summary="Lists all users",
     responses={
         200: OpenAPIResponse(model=[UserOut]),
         400: OpenAPIResponse(model=Error, description="Bad response"),
@@ -30,6 +31,7 @@ async def users() -> List[UserOut]:
 @get(
     "/user/{id}",
     tags=["User"],
+    summary="Get a user",
     description="Shows the information of a user",
     responses={
         200: OpenAPIResponse(model=UserOut),
@@ -47,6 +49,7 @@ async def user(id: int) -> UserOut:
 @post(
     "/create",
     tags=["User"],
+    summary="Create a user",
     description="Creates a user in the system",
     responses={400: OpenAPIResponse(model=Error, description="Bad response")},
 )
@@ -60,6 +63,7 @@ async def create(data: UserIn) -> None:
 
 @delete(
     "/user/{id}",
+    summary="Delete a user",
     tags=["User"],
     description="Deletes a user from the system by ID",
     responses={

@@ -13,8 +13,8 @@ class Article(saffier.Model):
     user = saffier.ForeignKey("User", related_name="articles")
     title = saffier.CharField(max_length=255, null=False)
     content = saffier.TextField()
-    created_at = saffier.DateTimeField(auto_now=True)
-    updated_at = saffier.DateTimeField(auto_now_add=True)
+    created_at = saffier.DateTimeField(auto_now_add=True)
+    updated_at = saffier.DateTimeField(auto_now=True)
 
     class Meta:
         registry = registry
