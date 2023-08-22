@@ -15,10 +15,15 @@ Examples:
         1. Import the Include object: from esmerald import Include
         2. Add a URL to route_patterns:  Gateway('/api/v1/', Include(namespace='myapp.urls'))
 """
-from esmerald import Gateway, Include
+from esmerald import Include
 
 route_patterns = [
-    Include("/accounts", namespace="accounts.v1.urls"),
-    Include("/articles", namespace="articles.v1.urls"),
-    Include("/posts", namespace="posts.v1.urls"),
+    Include(
+        "/api/v1",
+        routes=[
+            Include("/accounts", namespace="accounts.v1.urls"),
+            Include("/articles", namespace="articles.v1.urls"),
+            Include("/posts", namespace="posts.v1.urls"),
+        ],
+    )
 ]
