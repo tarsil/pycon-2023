@@ -46,9 +46,9 @@ This simple blgo application integrates [Esmerald][esmerald], [Saffier][saffier]
 6. Access the local documentation.
 
     ```shell
-    http://localhost:8000/docs/swagger # for swagger
-    http://localhost:8000/docs/redoc # for redoc
-    http://localhost:8000/docs/stoplight # for stoplight
+    http://localhost:8000/docs/swagger # for Swagger
+    http://localhost:8000/docs/redoc # for Redoc
+    http://localhost:8000/docs/stoplight # for Stoplight
     ```
 
 ### Create your superuser
