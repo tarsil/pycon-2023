@@ -11,7 +11,7 @@ from .schemas import Error, PostIn, PostOut
 
 
 @get(
-    "/posts/{article_id}",
+    "/{article_id}",
     tags=["Post"],
     description="Returns all posts of an article",
     summary="Posts of an article",
@@ -26,3 +26,38 @@ async def posts(article_id: int) -> List[PostOut]:
     """
     post_dao = PostDAO()
     return await post_dao.get_all(article_id=article_id)
+
+
+@post(
+    "/{article_id}",
+    tags=["Post"],
+    description="Creates a post for a specific article",
+    summary="Create a post of an article",
+    responses={
+        200: OpenAPIResponse(model=[PostOut]),
+        400: OpenAPIResponse(model=Error, description="Bad response"),
+    },
+)
+async def create_post(data: PostIn, article_id: int) -> PostOut:
+    """
+    Creates a post for a specfic article.
+    """
+    posts_dao = PostDAO()
+    return await posts_dao.create(article_id=article_id, **data.model_dump())
+
+
+@delete(
+    "/{article_id}/{post_id}",
+    tags=["Post"],
+    description="Deletes a post from the article",
+    summary="Deletes a post",
+    responses={
+        400: OpenAPIResponse(model=Error, description="Bad response"),
+    },
+)
+async def delete_post(article_id: int, post_id: int) -> None:
+    """
+    Deletes a post from an article
+    """
+    posts_dao = PostDAO()
+    await posts_dao.delete(obj_id=post_id, article_id=article_id)

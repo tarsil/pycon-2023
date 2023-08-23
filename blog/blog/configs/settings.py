@@ -32,7 +32,7 @@ class AppSettings(DatabaseSettings):
     """
 
     app_name: str = "My application in production mode."
-    title: str = "My linezap"
+    title: str = "My blog"
     environment: Optional[str] = EnvironmentType.PRODUCTION
     secret_key: str = "esmerald-insecure-)&amp;e5_#d@%z8h+p23r-6a8nhh!sc##^8x"
 

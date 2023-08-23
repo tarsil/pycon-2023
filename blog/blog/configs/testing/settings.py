@@ -14,5 +14,5 @@ from ..settings import AppSettings
 class TestingAppSettings(AppSettings):
     debug: bool = True
     app_name: str = "My application in testing mode."
-    title: str = "My linezap"
+    title: str = "My blog"
     environment: Optional[str] = EnvironmentType.TESTING
