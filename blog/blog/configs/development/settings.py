@@ -19,7 +19,7 @@ from ..settings import AppSettings
 class DevelopmentAppSettings(AppSettings):
     debug: bool = True
     app_name: str = "My application in development mode."
-    title: str = "My linezap"
+    title: str = "My blog"
     environment: Optional[str] = EnvironmentType.DEVELOPMENT
 
     def __init__(self, *args: Any, **kwds: Any) -> Any:
