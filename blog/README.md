@@ -73,7 +73,7 @@ To run the tests tou can simply run:
 $ pytest
 ```
 
-Or alternatively
+Or alternatively:
 
 ```shell
 $ make test
