@@ -1,6 +1,5 @@
 from typing import Any, List
 
-from accounts.models import User
 from accounts.v1.daos import UserDAO
 from articles.models import Article
 from articles.v1.daos import ArticleDAO
