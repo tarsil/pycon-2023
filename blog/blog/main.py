@@ -8,6 +8,8 @@ from typing import Optional
 
 from esmerald import Esmerald, Include, settings
 from esmerald.exception_handlers import value_error_handler
+from esmerald_admin import Admin
+from esmerald_admin.backends.saffier.email import EmailAdminAuth
 from saffier import Database, Migrate, Registry
 
 database, registry = settings.db_access
@@ -31,6 +33,24 @@ def get_migrations(app: "Esmerald", registry: "Registry") -> None:
     Migrate(app=app, registry=registry)
 
 
+def get_admin(app: Esmerald, registry: Registry) -> None:
+    """
+    Starts the admin
+    """
+    from accounts.models import User
+
+    from .admin import get_views
+
+    auth_backend = EmailAdminAuth(
+        secret_key=settings.secret_key, auth_model=User, config=settings.jwt_config
+    )
+
+    admin = Admin(app, registry.engine, authentication_backend=auth_backend)
+
+    # Get the views function from the "admin.py"
+    get_views(admin)
+
+
 def get_application(connection: Optional[Database] = None, models: Optional[Registry] = None):
     """
     This is optional. The function is only used for organisation purposes.
@@ -48,6 +68,9 @@ def get_application(connection: Optional[Database] = None, models: Optional[Regi
     # Migrations
     db_registry = models or registry
     get_migrations(app=app, registry=db_registry)
+
+    # Admin
+    get_admin(app=app, registry=db_registry)
     return app
 
 
