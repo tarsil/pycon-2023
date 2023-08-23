@@ -16,6 +16,7 @@ Examples:
         2. Add a URL to route_patterns:  Gateway('/api/v1/', Include(namespace='myapp.urls'))
 """
 from esmerald import Include
+from interceptors.base import LoggingInterceptor
 
 route_patterns = [
     Include(
@@ -25,5 +26,6 @@ route_patterns = [
             Include("/articles", namespace="articles.v1.urls"),
             Include("/posts", namespace="posts.v1.urls"),
         ],
+        interceptors=[LoggingInterceptor],
     )
 ]
