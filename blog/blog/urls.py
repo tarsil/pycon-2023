@@ -24,7 +24,7 @@ route_patterns = [
         routes=[
             Include("/accounts", namespace="accounts.v1.urls"),
             Include("/articles", namespace="articles.v1.urls"),
-            Include("/posts", namespace="posts.v1.urls"),
+            Include("/posts", namespace="posts.v1.urls")
         ],
         interceptors=[LoggingInterceptor],
     )
