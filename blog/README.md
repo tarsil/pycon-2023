@@ -1,6 +1,6 @@
 # A blog
 
-This simple blgo application integrates [Esmerald][esmerald], [Saffier][saffier] and
+This simple blog application integrates [Esmerald][esmerald], [Saffier][saffier] and
 [Esmerald Admin][esmerald_admin] making it simpler to show case any PoC needed.
 
 ## Requirements
