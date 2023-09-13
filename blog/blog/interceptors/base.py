@@ -11,6 +11,4 @@ class LoggingInterceptor(EsmeraldInterceptor):
         out the API itself.
         """
         request = Request(scope=scope, receive=receive, send=send)
-        method = request.method
-        url = request.url
-        logger.success(f"Method: {method}. URL: {url}. Logging into sentry...")
+        logger.success(f"Method: {request.method}. URL: {request.url}. Logging into sentry...")

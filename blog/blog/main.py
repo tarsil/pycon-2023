@@ -39,7 +39,7 @@ def get_admin(app: Esmerald, registry: Registry) -> None:
     """
     from accounts.models import User
 
-    from .admin import get_views
+    from .admin import generate_views
 
     auth_backend = EmailAdminAuth(
         secret_key=settings.secret_key, auth_model=User, config=settings.jwt_config
@@ -47,8 +47,8 @@ def get_admin(app: Esmerald, registry: Registry) -> None:
 
     admin = Admin(app, registry.engine, authentication_backend=auth_backend)
 
-    # Get the views function from the "admin.py"
-    get_views(admin)
+    # Run the views function from the "admin.py"
+    generate_views(admin)
 
 
 def get_application(connection: Optional[Database] = None, models: Optional[Registry] = None):

@@ -44,7 +44,7 @@ class PostAdmin(ModelView, model=Post):
     }
 
 
-def get_views(admin: Admin) -> None:
+def generate_views(admin: Admin) -> None:
     """Generates the admin views"""
     admin.add_model_view(UserAdmin)
     admin.add_model_view(ArticleAdmin)
